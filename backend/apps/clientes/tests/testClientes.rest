@@ -12,50 +12,44 @@ content-type: application/json
 ### teste de buscar todos os clientes
 GET http://localhost:40000/getAllClientes HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MzQwNjkzMiwiZXhwIjoxNjkzNDA3NTMyfQ.nZomCSSrqPvR8Mz-FrA0As9RZyYOX9MqDPLdWGuF8ak
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5NDAyNjg1MCwiZXhwIjoxNjk0MDI3NDUwfQ.hN4HrKTcxb16JPispA0GdMxBPsFKVsyZPEG_JAgcj2I
 
 {    
     
 }
 
 ### teste de buscar cliente por ID
-POST http://localhost:40000/getClienteByID /1.1
+POST http://localhost:40000/getClienteByID HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MzQwNjkzMiwiZXhwIjoxNjkzNDA3NTMyfQ.nZomCSSrqPvR8Mz-FrA0As9RZyYOX9MqDPLdWGuF8ak
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MzQwNjkzMiwiZXhwIjoxNjkzNDA3NTMyfQ.nZomCSSrqPvR8Mz-FrA0As9RZyYOX9MqDPLdWGuF8ak
 
 {    
     "clienteid": 1
 }
 
 ### teste de inserção de cliente 
-POST http://localhost:40000/insertClientes HTTP/1.1 
+POST http://localhost:40000/insertClientes HTTP/1.1
 content-type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MzQwNjkzMiwiZXhwIjoxNjkzNDA3NTMyfQ.nZomCSSrqPvR8Mz-FrA0As9RZyYOX9MqDPLdWGuF8ak
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MzQwNjkzMiwiZXhwIjoxNjkzNDA3NTMyfQ.nZomCSSrqPvR8Mz-FrA0As9RZyYOX9MqDPLdWGuF8ak
 
 {
-"clienteid": 0, 
-"prontuario": "pront5", 
-"nome": "Carlos das Matias", 
-"endereco": " Rua das couves", 
-"rendafamiliar": 10000, 
-"datanascimento": "1999-12-12", 
-"cursoid": 2, 
+"codigo": "CLI03", 
+"nome": "Carlos das Matias Neto", 
+"endereco": " Rua das aboboras", 
+"ativo": true, 
 "deleted": false
 }
 
 ### teste de atualização de cliente 
-POST http://localhost:40000/updateClientes HTTP/1.1 
+POST http://localhost:40000/updateClientes HTTP/1.1
 content-type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQzNTg3MSwiZXhwIjoxNjkxNDM2NDcxfQ.hAh0VyRfEXvYmhunlJALD-qda8pYr2zzAHobn1yua20
+//Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF3ZSIsImlhdCI6MTY5MTQzNTg3MSwiZXhwIjoxNjkxNDM2NDcxfQ.hAh0VyRfEXvYmhunlJALD-qda8pYr2zzAHobn1yua20
 
 {
-"clienteid": 52, 
-"prontuario": "pront109", 
-"nome": "xJosé das Neves", 
-"endereco": "x Rua das couves", 
-"rendafamiliar": 0, 
-"datanascimento": "1999-12-12", 
-"cursoid": 2, 
+"codigo": "CLI03", 
+"nome": "Carlos das Matias Neto", 
+"endereco": " Rua das aboboras", 
+"ativo": true, 
 "deleted": false
 }
 

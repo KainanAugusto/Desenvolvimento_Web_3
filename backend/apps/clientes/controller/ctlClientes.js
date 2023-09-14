@@ -15,32 +15,32 @@ const getAllClientes = (req, res) =>
 const getClienteByID = (req, res) =>
 (async () => {
 
-    const clienteID = parseInt(req.body.clienteID, 10);
+    const clienteID = parseInt(req.body.clienteid);
     let registro = await mdlClientes.getClienteByID(clienteID);
 
     res.json({ status: "ok", "registro": registro });
-})
+})();
 
 
 const insertClientes = (req, res) =>
     (async () => {
         const clienteREG = req.body;
-        let { msg, linhasAfetadas } = await mdlClientes.insertClient(clienteREG);
+        let { msg, linhasAfetadas } = await mdlClientes.insertClientes(clienteREG);
         res.json({ "status": msg, "linhasAfetadas": linhasAfetadas });
     })();
 
 const updateClientes = (req, res) =>
     (async () => {
-        const clienteREG = req.body;
-        let { msg, linhasAfetadas } = await mdlClientes.updateCliente(clienteREG);
+        const clienteREG = req.body.clienteid;
+        let { msg, linhasAfetadas } = await mdlClientes.updateClientes(clienteREG);
         res.json({ "status": msg, "linhasAfetadas": linhasAfetadas });
     })();
 
 const deleteClientes = (req, res) =>
     (async () => {
         const clienteREG = req.body;
-        let { msg, linhasAfetadas } = await mdlClientes(clienteREG);
-        res.json({ "status": msg, "linhasAfetadas": linhas });
+        let { msg, linhasAfetadas } = await mdlClientes.deleteClientes(clienteREG);
+        res.json({ "status": msg, "linhasAfetadas": linhasAfetadas });
     })();
 
 module.exports = {

@@ -1,10 +1,13 @@
 const db = require("../../../database/databaseconfig");
-const { getAlunoByID } = require("../../alunos/model/mdlAlunos");
 
 const getAllClientes = async () => {
     return (
         await db.query(
-            "SELECT *,(SELECT descricao from pedidos where pedidoid = cliente.pedidoid) FROM clientes WHERE deleted = false ORDER BY nome ASC"
+            "SELECT *, (SELECT numero from pedidos " +
+            "where pedidos.clienteid = clientes.clienteid)" +
+            "FROM clientes " +
+            "WHERE deleted = false " +
+            "ORDER BY nome ASC; "
         )
     ).rows;
 };
@@ -12,8 +15,11 @@ const getAllClientes = async () => {
 const getClienteByID = async (clienteIDPar) => {
     return (
         await db.query(
-            "SELECT *, (SELECT descricao from PEDIDOS where pedidoid = cliente.pedidoid) FROM clientes WHERE clienteid = $1 " +
-            " and deleted = false ORDER BY nome ASC", [clienteIDPar]
+            "SELECT *, (SELECT numero from PEDIDOS where pedidos.clienteid = clientes.clienteid) " +
+            "FROM clientes " +
+            "WHERE clienteid = $1 " +
+            "and deleted = false ORDER BY nome ASC ",
+            [clienteIDPar]
         )
     ).rows;
 };
@@ -25,7 +31,7 @@ const insertClientes = async (clienteREGPar) => {
     try {
         linhasAfetadas = (
             await db.query(
-                "INSERT INTO clientes " + "values(default, $1, $2, $3, $4, $5",
+                "INSERT INTO clientes values(default, $1, $2, $3, $4, $5",
                 [
                     clienteREGPar.codigo,
                     clienteREGPar.nome,
@@ -75,7 +81,7 @@ const deleteClientes = async (clienteIDPar) => {
         linhasAfetadas = (
             await db.query(
                 "UPDATE clientes SET deleted = true WHERE clienteid = $1",
-                [clienteIDPar.clienteid]
+                [clienteIDPar]
             )
         ).rowCount;
     } catch (error) {
